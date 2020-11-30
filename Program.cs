@@ -12,11 +12,11 @@ namespace garyGarage
     {
       Console.WriteLine("Vrooom!");
     }
-    public void Turn(string direction)
+    public virtual void Turn(string direction)
     {
       Console.WriteLine($"The vehicle makes a {direction} turn!");
     }
-    public void Stop()
+    public virtual void Stop()
     {
       Console.WriteLine("The Vehicle comes to a stop!");
     }
@@ -50,6 +50,10 @@ namespace garyGarage
     {
       Console.WriteLine($"The {this.MainColor} Cessna flashes by you! Zooooooommmmmmm!");
     }
+    public override void Stop()
+    {
+      Console.WriteLine($"The {this.MainColor} Cessna rolls to a stop on the runway.");
+    }
   }
 
   public class Tesla : Vehicle  // Electric car
@@ -57,6 +61,10 @@ namespace garyGarage
     public override void Drive()
     {
       Console.WriteLine($"The {this.MainColor} Tesla blazes by you! Vrrrrrmmmmmm!");
+    }
+    public override void Turn(string direction)
+    {
+      Console.WriteLine($"The {this.MainColor} rips around a {direction} turn!");
     }
   }
 
@@ -66,6 +74,11 @@ namespace garyGarage
     public override void Drive()
     {
       Console.WriteLine($"The {this.MainColor} Ram drives past RRrrrrrrrrrummbbbbbbble!");
+    }
+
+    public override void Stop()
+    {
+      Console.WriteLine($"The {this.MainColor} Ram comes rolling to a stop.");
     }
   }
 
@@ -89,10 +102,15 @@ namespace garyGarage
 
       fxs.Drive();
       modelS.Drive();
+      modelS.Turn("Left");
+      modelS.Stop();
       mx420.Drive();
+      mx420.Turn("Right");
+      mx420.Stop();
       r1500.Drive();
       r1500.Turn("Left");
       r1500.Stop();
+
     }
   }
 }
